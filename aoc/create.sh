@@ -16,6 +16,7 @@ from collections import defaultdict, Counter, deque
 # fmt: off
 sys.path.append("../..")
 from lib.list import *
+from lib.search import *
 # fmt: on
 
 lines = [line for line in sys.stdin.read().splitlines()]
