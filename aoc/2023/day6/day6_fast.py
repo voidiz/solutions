@@ -42,9 +42,9 @@ for i in range(n):
     distance = distances[i]
     p1 *= count_ways(time, distance)
 
-print(p1)
+print("Part 1:", p1)
 
 time = int("".join(map(str, times)))
 distance = int("".join(map(str, distances)))
 p2 = count_ways(time, distance)
-print(p2)
+print("Part 2:", p2)
