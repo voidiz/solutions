@@ -1,3 +1,8 @@
+"""
+search.py:
+    Implementations of different search algorithms.
+"""
+
 from typing import TypeVar, Callable
 
 T = TypeVar("T")

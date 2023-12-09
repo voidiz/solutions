@@ -2,11 +2,6 @@ import math
 import sys
 import re
 
-# fmt: off
-sys.path.append("../..")
-from lib.search import *
-# fmt: on
-
 lines = [line for line in sys.stdin.read().splitlines()]
 
 times = list(map(int, re.findall(r"\d+", lines[0])))
