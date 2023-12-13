@@ -8,26 +8,25 @@ from lib.list import *
 patterns = sys.stdin.read().split("\n\n")
 
 
-def check_ref(i, j, lines, n, fixed=False):
-    if i < 0 or j >= n:
+def check_ref(i, j, lines, fixed=False):
+    if i < 0 or j >= len(lines):
         # we must have fixed to complete
         return fixed
 
     l1 = lines[i]
     l2 = lines[j]
 
-    changed = False
     for c in range(len(l1)):
         if l1[c] == l2[c]:
             continue
 
-        # cant change if fixed or changed earlier
-        if fixed or changed:
+        # cant change if fixed earlier
+        if fixed:
             return False
 
-        changed = True
+        fixed = True
 
-    return check_ref(i - 1, j + 1, lines, n, fixed or changed)
+    return check_ref(i - 1, j + 1, lines, fixed)
 
 
 def solve(part2):
@@ -36,7 +35,7 @@ def solve(part2):
         lines = [line for line in pattern.split("\n") if line]
         found = False
         for i in range(len(lines) - 1):
-            if check_ref(i, i + 1, lines, len(lines), not part2):
+            if check_ref(i, i + 1, lines, not part2):
                 total += 100 * (i + 1)
                 found = True
 
@@ -45,7 +44,7 @@ def solve(part2):
 
         tlines = transpose(lines)
         for i in range(len(tlines) - 1):
-            if check_ref(i, i + 1, tlines, len(tlines), not part2):
+            if check_ref(i, i + 1, tlines, not part2):
                 total += i + 1
                 found = True
 
